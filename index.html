@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developers News</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #fefefe; /* Creme background */
+            font-family: 'Comic Sans MS', cursive;
+        }
+        .navbar {
+            background-color: #ffff66; /* Yellow navbar */
+        }
+        .card-title {
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/">Developers News</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/jobs">Jobs</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- Content -->
+<div class="container mt-5">
+        {% if news %}
+            <h2>Latest News</h2>
+            {% for item in news %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    {% if item.time %}
+                    <p class="card-text">Time: {{ item.time }}</p>
+                    {% endif %}
+                    {% if item.by %}
+                    <p class="card-text">Source: {{ item.by }}</p>
+                    {% endif %}
+                    {% if item.url %}
+                    <a href="{{ item.url }}" class="card-link" target="_blank">Read more</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if jobs %}
+<h2 class="mt-5">Latest Jobs</h2>
+            {% for job in jobs %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ job.title }}</h5>
+                    {% if job.by %}
+                    <p class="card-text">Posted by: {{ job.by }}</p>
+                    {% endif %}
+                    {% if job.url %}
+                    <a href="{{ job.url }}" class="card-link" target="_blank">View Job</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+<!-- Pagination -->
+        <nav aria-label="Page navigation example" class="mt-4">
+            <ul class="pagination justify-content-center">
+                {% if page and page > 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page - 1 }}">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                {% endif %}
+                <li class="page-item"><a class="page-link" href="?page={{ page }}">{{ page or 1 }}</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ (page or 1) + 1 }}">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
