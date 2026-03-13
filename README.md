@@ -54,7 +54,3 @@ You can add CSS/JS files in static/ folder if needed.
 
 License
 MIT License
-
-## Live Demo
-Click here to run the application:
-https://sherice-unvitrified-inhospitably.ngrok-free.dev
