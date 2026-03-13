@@ -57,4 +57,4 @@ MIT License
 
 ## Live Demo
 Click here to run the application:
-https://sherice-unvitrified-inhospitably.ngrok-free.dev -> http://localhost:5000
+https://sherice-unvitrified-inhospitably.ngrok-free.dev
